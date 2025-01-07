@@ -5,4 +5,5 @@ export const refs = {
 
   spaceshipWidth: 120,
   spaceshipHeight: 120,
+
 };
