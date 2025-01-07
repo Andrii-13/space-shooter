@@ -1,8 +1,8 @@
-import { Assets, Sprite, Container } from "pixi.js";
+import { Assets, Sprite, Container, Graphics } from "pixi.js";
 import { refs } from "../common/data";
-import { moveSpaceship } from "./moveSpasechip";
+import { moveSpaceship } from "./moveSpaceship";
 
-export async function addSpaceship(app) {
+export async function createSpaceship(app) {
   const spaceshipContainer = new Container();
 
   app.stage.addChild(spaceshipContainer);
@@ -18,10 +18,11 @@ export async function addSpaceship(app) {
   spaceship.position.set(app.screen.width / 2, app.screen.height);
 
   app.stage.eventMode = "static";
-
   app.stage.hitArea = app.screen;
 
   moveSpaceship(app, spaceship);
-
+  
   spaceshipContainer.addChild(spaceship);
 }
+
+

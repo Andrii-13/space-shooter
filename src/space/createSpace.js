@@ -1,6 +1,6 @@
 import { Assets, Sprite, Container } from "pixi.js";
 
-export async function addSpace(app) {
+export async function createSpace(app) {
   const container = new Container();
 
   app.stage.addChild(container);
