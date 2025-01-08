@@ -1,13 +1,17 @@
 import { Container } from "pixi.js";
 import { refs } from "../common/data";
 import { createBullet } from "./bullet/createBullet";
+import { createModal } from "../modal/modal";
+
+export const bullets = []; // Масив для збереження куль
+
+export let totalBullets = refs.totalBullets;
+export let stateBullet = false;
 
 export function moveSpaceship(app, spaceship) {
   // Контейнер для куль
   const bulletsContainer = new Container();
   app.stage.addChild(bulletsContainer);
-
-  const bullets = []; // Масив для збереження куль
 
   // Рух корабля
   const keys = {};
@@ -15,7 +19,7 @@ export function moveSpaceship(app, spaceship) {
     keys[e.code] = true;
 
     // Стрільба
-    if (e.code === "Space" && !keys["SpaceFired"]) {
+    if (e.code === "Space" && !keys["SpaceFired"] && totalBullets > 0) {
       keys["SpaceFired"] = true; // Запобігання багатьом пострілам на одне
       const bullet = createBullet(
         spaceship.x,
@@ -23,6 +27,7 @@ export function moveSpaceship(app, spaceship) {
       );
       bulletsContainer.addChild(bullet);
       bullets.push(bullet);
+      totalBullets -= 1;
     }
   });
 
@@ -33,7 +38,6 @@ export function moveSpaceship(app, spaceship) {
       keys["SpaceFired"] = false;
     }
   });
-
   app.ticker.add(() => {
     // Рух корабля
     if (keys["ArrowLeft"]) {
@@ -48,17 +52,25 @@ export function moveSpaceship(app, spaceship) {
         app.screen.width - spaceship.width / 2
       );
     }
-
+let j = 0;
     // Анімація куль
-    for (let i = bullets.length - 1; i >= 0; i--) {
+    for (let i = 0; i < bullets.length; i += 1) {
+      console.log(j)
+      j+=1
       const bullet = bullets[i];
       bullet.y -= refs.speedBullet; // Рух кулі вгору
-
-      // Видалення кулі, якщо вона виходить за межі екрану
+     // Видалення кулі, якщо вона виходить за межі екрану
       if (bullet.y < 0) {
+        //console.log(j, bullets.length)
+        if (totalBullets === 0 && j === bullets.length) {
+          console.log(totalBullets);
+          const title = "YOU LOSE";
+          createModal(app, title);
+        }
         bulletsContainer.removeChild(bullet);
         bullets.splice(i, 1);
       }
     }
   });
+  return bullets;
 }

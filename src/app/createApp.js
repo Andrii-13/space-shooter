@@ -1,12 +1,14 @@
-import { Application } from "pixi.js";
-import { refs } from "../common/data";
+import { createSpace } from "../space/createSpace";
+import { createSpaceship } from "../spaceship/createSpaceship";
+import { createAsteroid } from "../asteroid/createAsteroid";
+import { checkCollisions } from "../common/collisions";
+import { initApp } from "./initApp";
 
 export async function createApp() {
-    const app = new Application();
-
-    await app.init({ background: "green", width: refs.appWidth, height: refs.appHeight });
+  const app = await initApp();
+  await createSpace(app);
+  await createSpaceship(app);
+  await createAsteroid(app);
+  checkCollisions(app);
   
-    document.body.appendChild(app.canvas);
-
-    return app;
 }

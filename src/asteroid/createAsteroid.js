@@ -1,5 +1,7 @@
-import { Assets, Container, Sprite, Color } from "pixi.js";
+import { Assets, Container, Sprite } from "pixi.js";
 import { refs } from "../common/data";
+
+export const asteroids = [];
 
 export async function createAsteroid(app) {
   const asteroidContainer = new Container();
@@ -7,17 +9,21 @@ export async function createAsteroid(app) {
 
   const asteroidTexture = await Assets.load("/img/asteroid.png");
 
-  for (let i = 0; i < 5; i += 1) {
+
+
+  for (let i = 0; i < refs.totalAsteroid; i += 1) {
     const asteroid = new Sprite(asteroidTexture);
 
     asteroid.width = refs.asteroidWidth;
     asteroid.height = refs.asteroidHeight;
 
-    asteroid.x = Math.random() * (app.screen.width - refs.asteroidWidth / 2);
+    asteroid.x = Math.random() * (app.screen.width - refs.asteroidWidth);
     asteroid.y =
-      Math.random() * (app.screen.height / 2 - refs.asteroidHeight / 2);
+      Math.random() * (app.screen.height / 2 - refs.asteroidHeight);
 
-    asteroidContainer.addChild(asteroid);
+    asteroids.push(asteroid);
+
+      asteroidContainer.addChild(asteroid);
   }
 
 }
