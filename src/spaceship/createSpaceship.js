@@ -19,8 +19,8 @@ export async function createSpaceship(app) {
 
   spaceship.position.set(app.screen.width / 2, app.screen.height);
 
-  app.stage.eventMode = "static";
-  app.stage.hitArea = app.screen;
+  app.stage.eventMode = "static"; //Цей рядок встановлює режим обробки подій для всієї сцени (app.stage). У режимі "static" Pixi.js активує обробку подій, але не виконує додаткових перевірок на зміни положення чи розміру елементів, що підвищує продуктивність для статичних об'єктів.
+  app.stage.hitArea = app.screen; //Цей рядок визначає область (hitArea) сцени, в межах якої обробляються події (наприклад, натискання, наведення тощо). Тут область встановлюється рівною всьому екрану (app.screen).
 
   moveSpaceship(app, spaceship);
   isShoot(app, spaceship)
