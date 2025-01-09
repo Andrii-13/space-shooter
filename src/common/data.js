@@ -8,9 +8,9 @@ export const refs = {
 
   bulletColor: 0xff0000,
   speedBullet: 10,
-  totalBullets: 6,
+  totalBullets: 3,
 
   asteroidWidth: 100,
   asteroidHeight: 100,
-  totalAsteroid: 5,
+  totalAsteroid: 2,
 };

@@ -1,11 +1,14 @@
 import { asteroids } from "../asteroid/createAsteroid";
 import { createModal } from "../modal/modal";
-import { bullets, stateBullet } from "../spaceship/moveSpaceship";
+import { bullets } from "../spaceship/moveSpaceship";
 import { totalBullets } from "../spaceship/moveSpaceship";
 
 export function checkCollisions(app) {
+  
   app.ticker.add(() => {
+    
     for (let i = bullets.length - 1; i >= 0; i--) {
+      console.log(bullets.length)
       const bullet = bullets[i];
 
       for (let j = asteroids.length - 1; j >= 0; j--) {
@@ -15,7 +18,7 @@ export function checkCollisions(app) {
           // Видаляємо кулю і астероїд після зіткнення
           bullets.splice(i, 1);
           asteroids.splice(j, 1);
-          
+
           // Видаляємо спрайти з контейнерів
           bullet.parent.removeChild(bullet);
           asteroid.parent.removeChild(asteroid);
@@ -23,15 +26,15 @@ export function checkCollisions(app) {
           break;
         }
       }
-      
+      let title;
       if (asteroids.length === 0 && totalBullets >= 0) {
-       const title = "YOU WIN";
+        title = "YOU WIN";
         createModal(app, title);
         return;
-      // } else if (asteroids.length > 0 && totalBullets <= 0) {
-      //   title = "YOU LOSE";
-      //   createModal(app, title);
-      //   return;
+      } else if (asteroids.length > 0 && totalBullets <= 0) {
+        title = "YOU LOSE";
+        createModal(app, title);
+        return;
       }
     }
   });
