@@ -27,7 +27,6 @@ export function destruction(activeBullets) {
 function checkCollision(bullet, asteroid) {
   const bounds1 = bullet.getBounds(); // Отримуємо межі кулі
   const bounds2 = asteroid.getBounds(); // Отримуємо межі астероїда
-console.log(bounds1)
   // Перевіряємо, чи перетинаються ці межі
   return (
     bounds1.x + bounds1.width > bounds2.x && // Лівий край кулі за правим краєм астероїда

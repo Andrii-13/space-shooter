@@ -32,7 +32,6 @@ export function isShoot(app, spaceship) {
       const bullet = activeBullets[i];
       bullet.y -= 10; // Рух кулі вгору
       destruction(activeBullets);
-
       // Видалення кулі, якщо вона виходить за межі екрану
       if (bullet.y < 0) {
         app.stage.removeChild(bullet);
