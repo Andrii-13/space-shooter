@@ -8,7 +8,7 @@ export function setGameTime(app) {
 
   const timerHTLM = `<div class="timer" style="width: ${gameWidth}px"><span class="numeric">${startTime}</span> <span>сек</span></div>`;
 
-  const timerWrap = document.getElementById("timer");
+  const timerWrap = document.getElementById("one");
 
   timerWrap.insertAdjacentHTML("beforeend", timerHTLM);
 

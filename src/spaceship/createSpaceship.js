@@ -1,8 +1,7 @@
-import { Assets, Sprite, Container} from "pixi.js";
+import { Assets, Sprite, Container } from "pixi.js";
 import { refs } from "../common/data";
 import { moveSpaceship } from "./moveSpaceship";
 import { isShoot } from "./isShoot";
-
 
 export async function createSpaceship(app) {
   const spaceshipContainer = new Container();
@@ -23,10 +22,8 @@ export async function createSpaceship(app) {
   app.stage.hitArea = app.screen; //Цей рядок визначає область (hitArea) сцени, в межах якої обробляються події (наприклад, натискання, наведення тощо). Тут область встановлюється рівною всьому екрану (app.screen).
 
   moveSpaceship(app, spaceship);
-  isShoot(app, spaceship)
-  
+  isShoot(app, spaceship);
+
   spaceshipContainer.addChild(spaceship);
 
 }
-
-

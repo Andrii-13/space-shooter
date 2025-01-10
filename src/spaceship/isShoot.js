@@ -1,5 +1,6 @@
 import { destruction } from "../asteroid/destruction";
 import { refs } from "../common/data";
+import { setQuantityBullets, showRemaindBullets } from "../helpers/setQuantityBullets";
 import { createBullet } from "./bullet/createBullet";
 
 export function isShoot(app, spaceship) {
@@ -17,6 +18,8 @@ export function isShoot(app, spaceship) {
       app.stage.addChild(bullet);
       activeBullets.push(bullet);
       totalBullets -= 1;
+      console.log(totalBullets)
+      showRemaindBullets(totalBullets)
     }
   });
 
@@ -39,4 +42,7 @@ export function isShoot(app, spaceship) {
       }
     }
   });
+
+
+  
 }

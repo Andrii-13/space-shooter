@@ -3,6 +3,7 @@ import { createSpaceship } from "../spaceship/createSpaceship";
 import { createAsteroid } from "../asteroid/createAsteroid";
 import { initApp } from "./initApp";
 import { setGameTime } from "../helpers/setGameTime";
+import { setQuantityBullets } from "../helpers/setQuantityBullets";
 
 export async function createApp() {
   const app = await initApp();
@@ -10,4 +11,5 @@ export async function createApp() {
   await createSpaceship(app);
   await createAsteroid(app);
   setGameTime(app);
+  setQuantityBullets(app);
 }

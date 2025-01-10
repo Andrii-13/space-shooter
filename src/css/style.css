@@ -17,6 +17,15 @@
   gap: 5px
 }
 
+.bullets { 
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 28px;
+  font-weight: bold;
+  padding: 10px;
+  gap: 5px
+}
 .modal {
   position: fixed;
   overflow-y: auto;
