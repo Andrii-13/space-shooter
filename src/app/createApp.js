@@ -1,15 +1,8 @@
-import { createSpace } from "../space/createSpace";
-import { createSpaceship } from "../spaceship/createSpaceship";
-import { createAsteroid } from "../asteroid/createAsteroid";
+
 import { initApp } from "./initApp";
-import { setGameTime } from "../helpers/setGameTime";
-import { setQuantityBullets } from "../helpers/setQuantityBullets";
+import { createStartScreensaver } from "../screensavers/startScreensaver";
 
 export async function createApp() {
-  const app = await initApp();
-  //await createSpace(app);
-  await createSpaceship(app);
-  await createAsteroid(app);
-  setGameTime(app);
-  setQuantityBullets(app);
+  const app = await initApp(); 
+  createStartScreensaver(app);
 }

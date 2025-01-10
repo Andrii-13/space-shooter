@@ -18,7 +18,6 @@ export function isShoot(app, spaceship) {
       app.stage.addChild(bullet);
       activeBullets.push(bullet);
       totalBullets -= 1;
-      console.log(totalBullets)
       showRemaindBullets(totalBullets)
     }
   });
