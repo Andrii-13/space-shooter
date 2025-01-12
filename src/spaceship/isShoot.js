@@ -1,6 +1,8 @@
 import { destruction } from "../asteroid/destruction";
 import { refs } from "../common/data";
 import { showRemaindBullets } from "../helpers/setQuantityBullets";
+import { stopApp } from "../helpers/stopApp";
+import { createFinScreensaver } from "../screensavers/FinScreensaver";
 import { createBullet } from "./bullet/createBullet";
 
 export function isShoot(app, spaceship) {
@@ -18,7 +20,10 @@ export function isShoot(app, spaceship) {
       app.stage.addChild(bullet);
       activeBullets.push(bullet);
       totalBullets -= 1;
-      showRemaindBullets(totalBullets)
+      showRemaindBullets(totalBullets);
+      if (!totalBullets) {
+        stopApp(app)
+      }
     }
   });
 
@@ -41,7 +46,4 @@ export function isShoot(app, spaceship) {
       }
     }
   });
-
-
-  
 }

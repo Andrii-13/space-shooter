@@ -14,5 +14,5 @@ export const refs = {
   asteroidHeight: 100,
   totalAsteroid: 8,
 
-  gameTime: 3,
+  gameTime: 20,
 };

@@ -12,10 +12,14 @@ export function destruction(activeBullets) {
         // Видаляємо кулю і астероїд
         activeBullets.splice(i, 1);
         asteroids.splice(j, 1);
+        // Видаляємо спрайти з контейнерів, перевіряючи, чи існують вони
+        if (bullet.parent) {
+          bullet.parent.removeChild(bullet);
+        }
 
-        // Видаляємо спрайти з контейнерів
-        bullet.parent.removeChild(bullet);
-        asteroid.parent.removeChild(asteroid);
+        if (asteroid.parent) {
+          asteroid.parent.removeChild(asteroid);
+        }
 
         break; // Виходимо з циклів, бо астероїд і куля вже видалені
       }

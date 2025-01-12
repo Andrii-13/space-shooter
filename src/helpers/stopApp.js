@@ -1,3 +1,6 @@
+import { createFinScreensaver } from "../screensavers/FinScreensaver";
+
+
 export function stopApp(app) {
 const bulletsEl = document.querySelector(".bullets");
 const timerEl = document.querySelector(".timer")
@@ -9,5 +12,5 @@ bulletsEl.classList.add("visually-hidden")
     while (app.stage.children.length > 0) {
       app.stage.removeChild(app.stage.children[0]);
     }
-  
+  createFinScreensaver(app)
   }

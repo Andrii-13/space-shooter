@@ -1,5 +1,4 @@
 import { refs } from "../common/data";
-import { createFinScreensaver } from "../screensavers/FinScreensaver";
 import { createTimerHTML } from "./createTimerHTML";
 import { stopApp } from "./stopApp";
 
@@ -17,7 +16,6 @@ export function setGameTime(app) {
 
     if (startTime <= 0) {
       clearInterval(timeInterval);
-      createFinScreensaver(app);
       stopApp(app);
     }
   }, 1000);
