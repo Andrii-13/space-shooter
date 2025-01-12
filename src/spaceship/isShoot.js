@@ -1,6 +1,6 @@
 import { destruction } from "../asteroid/destruction";
 import { refs } from "../common/data";
-import { setQuantityBullets, showRemaindBullets } from "../helpers/setQuantityBullets";
+import { showRemaindBullets } from "../helpers/setQuantityBullets";
 import { createBullet } from "./bullet/createBullet";
 
 export function isShoot(app, spaceship) {
