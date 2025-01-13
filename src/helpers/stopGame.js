@@ -1,7 +1,7 @@
 import { createFinScreensaver } from "../screensavers/FinScreensaver";
 
 
-export function stopApp(app) {
+export function stopGame(app) {
 const bulletsEl = document.querySelector(".bullets");
 const timerEl = document.querySelector(".timer")
 

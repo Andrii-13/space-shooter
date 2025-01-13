@@ -14,5 +14,12 @@ export const refs = {
   asteroidHeight: 100,
   totalAsteroid: 8,
 
-  gameTime: 20,
+  gameTime: 5,
+};
+
+export const level1 = {
+  remainingTime: refs.gameTime,
+  quantityUsedBullets: refs.totalBullets,
+  quantityDistractionAsteroid: refs.totalAsteroid,
+  stopGame: false,
 };

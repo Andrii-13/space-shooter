@@ -1,12 +1,13 @@
 import { asteroids } from "./createAsteroid"; // Імпортуємо астероїди
 
+let destructions = 0;
+
 export function destruction(activeBullets) {
   for (let i = activeBullets.length - 1; i >= 0; i--) {
     const bullet = activeBullets[i];
 
     for (let j = asteroids.length - 1; j >= 0; j--) {
       const asteroid = asteroids[j];
-
       if (checkCollision(bullet, asteroid)) {
         // Якщо сталося зіткнення:
         // Видаляємо кулю і астероїд
@@ -20,11 +21,12 @@ export function destruction(activeBullets) {
         if (asteroid.parent) {
           asteroid.parent.removeChild(asteroid);
         }
-
+        destructions += 1;
         break; // Виходимо з циклів, бо астероїд і куля вже видалені
       }
     }
   }
+  return destructions;
 }
 
 // Функція перевірки зіткнення між кулею і астероїдом

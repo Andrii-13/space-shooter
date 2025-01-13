@@ -1,6 +1,6 @@
 import { refs } from "../common/data";
 import { createTimerHTML } from "./createTimerHTML";
-import { stopApp } from "./stopApp";
+import { stopGame } from "./stopGame";
 
 export function setGameTime(app) {
   let startTime = refs.gameTime;
@@ -16,7 +16,8 @@ export function setGameTime(app) {
 
     if (startTime <= 0) {
       clearInterval(timeInterval);
-      stopApp(app);
+      stopGame(app);
+      console.log(app)
     }
   }, 1000);
 }
