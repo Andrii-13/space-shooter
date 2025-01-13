@@ -13,11 +13,20 @@ export function setGameTime(app) {
   const timeInterval = setInterval(() => {
     startTime -= 1;
     numericEl.textContent = startTime;
+    app.level1.remainingTime = startTime;
 
     if (startTime <= 0) {
       clearInterval(timeInterval);
       stopGame(app);
-      console.log(app)
+      app.level1.stopGame = true;
+    }
+
+    if (app.level1.stopGame) {
+      clearInterval(timeInterval);
+      app.level1.remainingTime = startTime;
+      console.log(app.level1.quantityDistractionAsteroid);
+      console.log(app.level1.quantityUsedBullets);
+      console.log(app.level1.remainingTime);
     }
   }, 1000);
 }

@@ -26,6 +26,7 @@ export function destruction(activeBullets) {
       }
     }
   }
+  //app.level1.quantityDistractionAsteroid = destructions;
   return destructions;
 }
 

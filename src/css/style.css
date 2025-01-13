@@ -1,10 +1,12 @@
-@import 'modern-normalize';
-@import './reset.css';
-@import './variables.css';
-@import './button.css';
+@import "./fonts.css";
 
-body{
- padding: 8px;
+@import "modern-normalize";
+@import "./reset.css";
+@import "./variables.css";
+@import "./button.css";
+
+body {
+  padding: 8px;
 }
 
 .visually-hidden {
@@ -14,34 +16,36 @@ body{
   margin: -1px;
   border: 0;
   padding: 0;
-  
+
   white-space: nowrap;
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
 
-.timer { 
+.timer {
   position: absolute;
   display: flex;
   justify-content: flex-end;
   font-size: 28px;
   font-weight: bold;
   padding: 10px;
-  gap: 5px
+  gap: 5px;
 }
 
-.bullets { 
+.bullets {
   position: absolute;
   display: flex;
   justify-content: flex-start;
   font-size: 28px;
   font-weight: bold;
   padding: 10px;
-  gap: 5px
+  gap: 5px;
 }
 
 .screensaver{
+  font-family: var(--font-secondary);
+  
   position: fixed;
   overflow-y: auto;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -68,23 +72,41 @@ body{
   text-align: center;
 }
 
-
 .title {
   display: block;
   text-align: center;
   color: #0e0d0d;
-  width: 100%;
-  font-size: 50px;
+  width: 100%;  
   font-weight: bold;
 }
 
+.titleGame{
+  font-size: 100px;
+  font-weight: 900;
+  line-height: 50px;
+}
+
+.titleLevel{
+  font-size: 60px;
+}
+
 .timer,
-.bullets{
+.bullets {
   color: var(--colorPrimary);
 }
 
-.buttons-wrap{
+.buttons-wrap {
+  font-size: 20px;
+  
   display: flex;
   justify-content: center;
   gap: 20px;
+}
+
+.btn{
+  letter-spacing: 8px;
+}
+
+body{
+  font-family: "Space";
 }

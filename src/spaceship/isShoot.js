@@ -21,6 +21,7 @@ export function isShoot(app, spaceship) {
       activeBullets.push(bullet);
       totalBullets -= 1;
       showRemaindBullets(totalBullets);
+      app.level1.quantityUsedBullets = refs.totalBullets - totalBullets;
     }
   });
 
@@ -35,16 +36,25 @@ export function isShoot(app, spaceship) {
     for (let i = activeBullets.length - 1; i >= 0; i -= 1) {
       const bullet = activeBullets[i];
       bullet.y -= refs.speedBullet; // Рух кулі вгору
-      const destractions = destruction(activeBullets);
-       // Видалення кулі, якщо вона виходить за межі екрану
+      const destructions = destruction(activeBullets);
+      app.level1.quantityDistractionAsteroid = destructions;
+      // Видалення кулі, якщо вона виходить за межі екрану
       if (bullet.y < 0) {
         quantityMissedShoots += 1;
         app.stage.removeChild(bullet);
         activeBullets.splice(i, 1);
       }
-      if (quantityMissedShoots + destractions === refs.totalBullets) {
-        console.log(app)
+      if (quantityMissedShoots + destructions === refs.totalBullets) {
+        app.level1.stopGame = true;
+        console.log(app);
         stopGame(app);
+      }
+      if (
+        app.level1.quantityDistractionAsteroid === refs.totalAsteroid &&
+        app.level1.quantityUsedBullets >= 0 &&
+        app.level1.remainingTime >= 0
+      ) {
+        app.level1.gamerStatus = "win";
       }
     }
   });
