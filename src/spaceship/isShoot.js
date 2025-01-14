@@ -44,16 +44,17 @@ export function isShoot(app, spaceship) {
         app.stage.removeChild(bullet);
         activeBullets.splice(i, 1);
       }
-      if (quantityMissedShoots + destructions === refs.totalBullets) {
+      if (quantityMissedShoots + destructions === refs.totalBullets && destructions !== refs.totalAsteroid) {
         app.level1.stopGame = true;
         console.log("quantityMissedShoots", quantityMissedShoots);
         console.log("destructions", destructions);
+        console.log("кінчились пулі")
         stopGame(app);
       }
       if (
         app.level1.quantityDistractionAsteroid === refs.totalAsteroid &&
         app.level1.quantityUsedBullets >= 0 &&
-        app.level1.remainingTime >= 0
+        app.level1.remainingTime >= 0 && !app.level1.stopGame
       ) {
         app.level1.gamerStatus = "win";
         app.level1.stopGame = true;

@@ -17,7 +17,7 @@ export function setGameTime(app) {
 
     let clearIntervalStatus = false;
 
-    if (startTime <= 0) {
+    if (startTime <= 0 && !app.level1.stopGame) {
       clearInterval(timeInterval);
       stopGame(app);
       app.level1.stopGame = true;
