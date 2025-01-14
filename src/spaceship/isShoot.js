@@ -46,7 +46,8 @@ export function isShoot(app, spaceship) {
       }
       if (quantityMissedShoots + destructions === refs.totalBullets) {
         app.level1.stopGame = true;
-        console.log(app);
+        console.log("quantityMissedShoots", quantityMissedShoots);
+        console.log("destructions", destructions);
         stopGame(app);
       }
       if (
@@ -55,6 +56,9 @@ export function isShoot(app, spaceship) {
         app.level1.remainingTime >= 0
       ) {
         app.level1.gamerStatus = "win";
+        app.level1.stopGame = true;
+        console.log("перемога")
+        stopGame(app);
       }
     }
   });

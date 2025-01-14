@@ -15,18 +15,19 @@ export function setGameTime(app) {
     numericEl.textContent = startTime;
     app.level1.remainingTime = startTime;
 
+    let clearIntervalStatus = false;
+
     if (startTime <= 0) {
       clearInterval(timeInterval);
       stopGame(app);
       app.level1.stopGame = true;
+      console.log("кінчився час", app.level1)
+      clearIntervalStatus = true
     }
 
-    if (app.level1.stopGame) {
+    if (app.level1.stopGame && !clearIntervalStatus) {
       clearInterval(timeInterval);
-      app.level1.remainingTime = startTime;
-      console.log(app.level1.quantityDistractionAsteroid);
-      console.log(app.level1.quantityUsedBullets);
-      console.log(app.level1.remainingTime);
+      console.log("стоп таймер");
     }
   }, 1000);
 }

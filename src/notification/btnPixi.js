@@ -58,20 +58,19 @@ export function createButton(app) {
     stroke.tint = 0xffffff; // Відновлення кольору кнопки
     btnShadow.tint = 0xffffff;
     buttonText.style.fill = 0x000000;
+
+    app.startBtn = true;
   });
 
   btn.on("pointerdown", () => {
-    console.log("Button clicked!");
+    window.removeEventListener("keydown", keydownListener);
+    window.removeEventListener("keyup", keyupListener);
   });
 
-  // 7. Додати слухач для натискання клавіші на весь документ
-  // Використовуємо "keydown" подію для фіксації натискання клавіші Enter або Space
-  app.view.tabIndex = 0; // Дозволяє фокусувати канвас
-  app.view.focus(); // Фокусується на сцені
 
   const keys = {};
 
-  window.addEventListener("keydown", (e) => {
+  const keydownListener = (e) => {
     if (
       !keys.pressed &&
       (e.code === "Enter" || e.code === "NumpadEnter" || e.code === "Space")
@@ -83,9 +82,9 @@ export function createButton(app) {
       btnShadow.tint = 0x3d3d3d;
       buttonText.style.fill = 0xffffff;
     }
-  });
+  };
 
-  window.addEventListener("keyup", (e) => {
+  const keyupListener = (e) => {
     if (
       keys.pressed &&
       (e.code === "Enter" || e.code === "NumpadEnter" || e.code === "Space")
@@ -97,7 +96,11 @@ export function createButton(app) {
       btnShadow.tint = 0xffffff;
       buttonText.style.fill = 0x000000;
     }
-  });
+  };
+
+  window.addEventListener("keydown", keydownListener);
+
+  window.addEventListener("keyup", keyupListener);
 
   return btn;
 }
