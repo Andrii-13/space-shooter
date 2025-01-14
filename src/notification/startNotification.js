@@ -1,36 +1,26 @@
-import { Color, FillGradient, Text, TextStyle } from "pixi.js";
+import { Text, TextStyle } from "pixi.js";
+import { titleStylePixi } from "./notificationStyles";
+import { createButton } from "./btnPixi";
 
 export function startNotification(app) {
-  const titleStyle = new TextStyle({
-    fontFamily: "Space",
-    dropShadow: {
-      alpha: 0.8,
-      angle: 2.1,
-      blur: 4,
-      color: "0x111111",
-      distance: 10,
-    },
-    fill: "#7BA05B",
-    stroke: { color: "#004620", width: 12, join: "round" },
-    fontSize: 60,
-    fontWeight: "lighter",
-  });
+  const titleStyle = new TextStyle(titleStylePixi);
 
-  const gameName = new Text({ text: "Space shooter", style: titleStyle });
+  const titleGameName = new Text({ text: "Space shooter", style: titleStyle });
 
-  const titleLevelStyle = new TextStyle({ ...titleStyle, _fontSize: 40 });
-  console.log(titleLevelStyle)
-  console.log(titleStyle)
-  const gameLevel = new Text({ text: "Level 1", style: titleLevelStyle });
+  const titleLevelStyle = new TextStyle({ ...titleStyle, fontSize: 40 });
+  const titleGameLevel = new Text({ text: "Level 1", style: titleLevelStyle });
 
-  gameName.x = app.screen.width / 2;
-  gameName.y = 100;
-  gameName.anchor.set(0.5);
+  titleGameName.x = app.screen.width / 2;
+  titleGameName.y = 200;
+  titleGameName.anchor.set(0.5);
 
-  gameLevel.x = app.screen.width / 2;
-  gameLevel.y = 200;
-  gameLevel.anchor.set(0.5);
+  titleGameLevel.x = app.screen.width / 2;
+  titleGameLevel.y = 300;
+  titleGameLevel.anchor.set(0.5);
 
-  app.stage.addChild(gameName);
-  app.stage.addChild(gameLevel);
+  const startButton = createButton(app);
+
+  app.stage.addChild(titleGameName);
+  app.stage.addChild(titleGameLevel);
+  app.stage.addChild(startButton);
 }
