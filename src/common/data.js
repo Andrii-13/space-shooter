@@ -15,4 +15,7 @@ export const refs = {
   totalAsteroid: 8,
 
   gameTime: 20,
+
+  gameName: "Space shooter",
+  gameLevel1: "Level 1",
 };

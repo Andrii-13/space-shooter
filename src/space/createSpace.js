@@ -11,6 +11,6 @@ export async function createSpace(app) {
 
   space.height = app.screen.height;
   space.width = app.screen.width;
-
   container.addChild(space);
+  container.label = "space";
 }

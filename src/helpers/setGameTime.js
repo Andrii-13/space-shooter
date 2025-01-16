@@ -27,7 +27,6 @@ export function setGameTime(app) {
 
     if (app.level1.stopGame && !clearIntervalStatus) {
       clearInterval(timeInterval);
-      console.log("стоп таймер");
     }
   }, 1000);
 }
