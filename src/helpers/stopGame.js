@@ -1,4 +1,6 @@
+import { refs } from "../common/data";
 import { finNotification } from "../notification/finNotification";
+import { startNotification } from "../notification/startNotification";
 
 export function stopGame(app) {
   const bulletsEl = document.querySelector(".bullets");
@@ -15,6 +17,13 @@ export function stopGame(app) {
       app.stage.removeChild(child);
     }
   }
-console.log(app.level1)
-  finNotification(app);
+
+  switch (app.level1.gamerStatus) {
+    case "":
+      finNotification(app);
+      break;
+    case "win":
+      startNotification(app, refs.gameLevel2);
+      break;
+  }
 }

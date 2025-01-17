@@ -1,8 +1,7 @@
 import { refs } from "../common/data";
 
-export function initDataLevel1(app) {
-  app.level1 = {
-    gamerStatus:"",
+export function initDataLevel2(app) {
+  app.level2 = {
     remainingTime: refs.gameTime,
     quantityUsedBullets: 0,
     quantityDistractionAsteroid: 0,

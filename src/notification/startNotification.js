@@ -3,16 +3,17 @@ import { titleStylePixi } from "./notificationStyles";
 import { createButton } from "./btnPixi";
 import { createSpace } from "../space/createSpace";
 import { startGame } from "../app/startGame";
+import { refs } from "../common/data";
+import { startGame2 } from "../app/startGame2";
 
-export function startNotification(app) {
+export function startNotification(app, level) {
   createSpace(app);
+  const gameLevel = level ? refs.gameLevel2 : refs.gameLevel1;
+
   const titleStyle = new TextStyle(titleStylePixi);
-
-  //const winner = app.level1.gamerStatus;
-
-  const titleGameName = new Text({ text: "Space shooter", style: titleStyle });
+  const titleGameName = new Text({ text: refs.gameName, style: titleStyle });
   const titleLevelStyle = new TextStyle({ ...titleStyle, _fontSize: 40 });
-  const subTitle = new Text({ text: "Level 1", style: titleLevelStyle });
+  const subTitle = new Text({ text: gameLevel, style: titleLevelStyle });
 
   titleGameName.x = app.screen.width / 2;
   titleGameName.y = 200;
@@ -29,8 +30,15 @@ export function startNotification(app) {
     app.stage.removeChild(titleGameName);
     app.stage.removeChild(subTitle);
     app.stage.removeChild(startButton);
-
-    startGame(app);
+    
+    // switch (gameLevel) {
+    //   case "Level 1":
+    //     startGame(app);
+    //     break;
+    //   case "Level 2":
+        startGame2(app)
+        // break;
+    // }
   });
 
   app.stage.addChild(titleGameName);

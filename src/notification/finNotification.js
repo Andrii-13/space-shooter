@@ -1,6 +1,5 @@
 import { Text, TextStyle } from "pixi.js";
 import { titleStylePixi } from "./notificationStyles";
-import { createButton } from "./btnPixi";
 
 export function finNotification(app) {
   const titleStyle = new TextStyle(titleStylePixi);

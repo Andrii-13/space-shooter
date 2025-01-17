@@ -106,8 +106,8 @@ export function createButton(app) {
 }
 
 const textStyle = new TextStyle({
-  fontFamily: "Space", // Ви можете використовувати будь-який шрифт
+  fontFamily: "Space", 
   fontSize: 24,
-  fill: "#000000", // Білий текст
+  fill: "#000000", 
   align: "center",
 });

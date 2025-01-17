@@ -1,6 +1,12 @@
 export const refs = {
+  gameName: "Space shooter",
+  gameLevel1: "Level 1",
+  gameLevel2: "Level 2",
+
   appWidth: 1280,
   appHeight: 720,
+
+  gameTime: 60,
 
   spaceshipWidth: 120,
   spaceshipHeight: 120,
@@ -14,8 +20,8 @@ export const refs = {
   asteroidHeight: 100,
   totalAsteroid: 8,
 
-  gameTime: 20,
+  
+ 
 
-  gameName: "Space shooter",
-  gameLevel1: "Level 1",
+
 };
