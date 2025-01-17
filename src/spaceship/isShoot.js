@@ -11,17 +11,19 @@ export function isShoot(app, spaceship) {
   let quantityMissedShoots = 0;
 
   window.addEventListener("keydown", (e) => {
-    keys[e.code] = true;
-    if (e.code === "Space" && !keys["SpaceFired"] && totalBullets) {
-      keys["SpaceFired"] = true;
-      const bullet = createBullet();
-      bullet.x = spaceship.x;
-      bullet.y = spaceship.y - refs.spaceshipHeight / 1.1;
-      app.stage.addChild(bullet);
-      activeBullets.push(bullet);
-      totalBullets -= 1;
-      showRemaindBullets(totalBullets);
-      app.level1.quantityUsedBullets = refs.totalBullets - totalBullets;
+    if (app.level1.asteroids !== app.level1.quantityDistractionAsteroid) {
+      keys[e.code] = true;
+      if (e.code === "Space" && !keys["SpaceFired"] && totalBullets) {
+        keys["SpaceFired"] = true;
+        const bullet = createBullet();
+        bullet.x = spaceship.x;
+        bullet.y = spaceship.y - refs.spaceshipHeight / 1.1;
+        app.stage.addChild(bullet);
+        activeBullets.push(bullet);
+        totalBullets -= 1;
+        showRemaindBullets(totalBullets);
+        app.level1.quantityUsedBullets = refs.totalBullets - totalBullets;
+      }
     }
   });
 
@@ -44,14 +46,18 @@ export function isShoot(app, spaceship) {
         app.stage.removeChild(bullet);
         activeBullets.splice(i, 1);
       }
-      if (quantityMissedShoots + destructions === refs.totalBullets && destructions !== refs.totalAsteroid) {
+      if (
+        quantityMissedShoots + destructions === refs.totalBullets &&
+        destructions !== app.level1.asteroids
+      ) {
         app.level1.stopGame = true;
         stopGame(app);
       }
       if (
-        app.level1.quantityDistractionAsteroid === refs.totalAsteroid &&
+        app.level1.quantityDistractionAsteroid === app.level1.asteroids &&
         app.level1.quantityUsedBullets >= 0 &&
-        app.level1.remainingTime >= 0 && !app.level1.stopGame
+        app.level1.remainingTime >= 0 &&
+        !app.level1.stopGame
       ) {
         app.level1.gamerStatus = "win";
         app.level1.stopGame = true;

@@ -15,6 +15,6 @@ export function stopGame(app) {
       app.stage.removeChild(child);
     }
   }
-
+console.log(app.level1)
   finNotification(app);
 }

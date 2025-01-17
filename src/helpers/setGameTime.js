@@ -21,7 +21,6 @@ export function setGameTime(app) {
       clearInterval(timeInterval);
       stopGame(app);
       app.level1.stopGame = true;
-      console.log("кінчився час", app.level1)
       clearIntervalStatus = true
     }
 
