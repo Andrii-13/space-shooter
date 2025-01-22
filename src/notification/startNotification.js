@@ -31,14 +31,14 @@ export function startNotification(app, level) {
     app.stage.removeChild(subTitle);
     app.stage.removeChild(startButton);
     
-    // switch (gameLevel) {
-    //   case "Level 1":
-    //     startGame(app);
-    //     break;
-    //   case "Level 2":
+    switch (gameLevel) {
+      case "Level 1":
+        startGame(app);
+        break;
+      case "Level 2":
         startGame2(app)
-        // break;
-    // }
+        break;
+    }
   });
 
   app.stage.addChild(titleGameName);

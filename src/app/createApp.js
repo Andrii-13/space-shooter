@@ -1,10 +1,10 @@
 
 import { initApp } from "./initApp";
-import { createStartScreensaver } from "../screensavers/startScreensaver";
 import { startNotification } from "../notification/startNotification";
+import { startGame2 } from "./startGame2";
 
 export async function createApp() {
   const app = await initApp(); 
- // createStartScreensaver(app);
- startNotification(app)
+ //startNotification(app)
+startGame2(app)
 }

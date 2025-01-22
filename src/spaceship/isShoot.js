@@ -2,7 +2,7 @@ import { destruction } from "../asteroid/destruction";
 import { refs } from "../common/data";
 import { showRemaindBullets } from "../helpers/setQuantityBullets";
 import { stopGame } from "../helpers/stopGame";
-import { createBullet } from "./bullet/createBullet";
+import { createBullet } from "../bullet/createBullet";
 
 export function isShoot(app, spaceship) {
   const keys = {};
@@ -11,19 +11,25 @@ export function isShoot(app, spaceship) {
   let quantityMissedShoots = 0;
 
   window.addEventListener("keydown", (e) => {
-    if (app.level1.asteroids !== app.level1.quantityDistractionAsteroid) {
-      keys[e.code] = true;
-      if (e.code === "Space" && !keys["SpaceFired"] && totalBullets) {
-        keys["SpaceFired"] = true;
-        const bullet = createBullet();
-        bullet.x = spaceship.x;
-        bullet.y = spaceship.y - refs.spaceshipHeight / 1.1;
-        app.stage.addChild(bullet);
-        activeBullets.push(bullet);
-        totalBullets -= 1;
-        showRemaindBullets(totalBullets);
-        app.level1.quantityUsedBullets = refs.totalBullets - totalBullets;
+    console.log(app.level2)
+    if (app.level1 && !app.level2) {
+      if (app.level1.asteroids !== app.level1.quantityDistractionAsteroid) {
+        keys[e.code] = true;
+        if (e.code === "Space" && !keys["SpaceFired"] && totalBullets) {
+          keys["SpaceFired"] = true;
+          const bullet = createBullet();
+          bullet.x = spaceship.x;
+          bullet.y = spaceship.y - refs.spaceshipHeight / 1.1;
+          app.stage.addChild(bullet);
+          activeBullets.push(bullet);
+          totalBullets -= 1;
+          showRemaindBullets(totalBullets);
+          app.level1.quantityUsedBullets = refs.totalBullets - totalBullets;
+        }
       }
+    }
+    if (app.level2) {
+      console.log("is shooting");
     }
   });
 

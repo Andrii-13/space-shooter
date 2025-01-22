@@ -12,6 +12,7 @@ export const refs = {
   spaceshipHeight: 120,
   speedSpaceship: 10,
 
+  bulletDiametr: 5,
   bulletColor: 0xff0000,
   speedBullet: 10,
   totalBullets: 10,
@@ -20,8 +21,10 @@ export const refs = {
   asteroidHeight: 100,
   totalAsteroid: 8,
 
-  
- 
+  bossWidth: 100,
+  bossHeight: 150,
 
-
+  hitPointsHeight: 10,
+  hitPointsWidth: 20,
+  totalHitPoints: 4,
 };

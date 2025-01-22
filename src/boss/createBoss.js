@@ -1,4 +1,8 @@
 import { Assets, Container, Sprite } from "pixi.js";
+import { moveBoss } from "./moveBoss";
+import { bossShoot } from "./bossShoot";
+import { refs } from "../common/data";
+import { hitPoints } from "./hitPoints";
 
 export async function createBoss(app) {
   const bossContainer = new Container();
@@ -7,8 +11,18 @@ export async function createBoss(app) {
 
   const boss = new Sprite(bossTexture);
 
-  boss.height = 150;
-  boss.width = 100;
+  boss.height = refs.bossHeight;
+  boss.width = refs.bossWidth;
+
+  const min = 0;
+  const max = app.screen.width - boss.width;
+  const moovingX = Math.floor(Math.random() * (max - min + 1)) + min;
+  boss.x = moovingX;
 
   bossContainer.addChild(boss);
+
+  moveBoss(app, boss);
+  bossShoot(app, boss);
+  hitPoints(app, boss.x);
+  console.log(app);
 }
