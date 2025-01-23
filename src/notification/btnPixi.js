@@ -73,7 +73,7 @@ export function createButton(app) {
   const keydownListener = (e) => {
     if (
       !keys.pressed &&
-      (e.code === "Enter" || e.code === "NumpadEnter" || e.code === "Space")
+      (e.code === "Enter" || e.code === "NumpadEnter")
     ) {
       btn.emit("pointerdown");
       keys.pressed = true;
@@ -87,7 +87,7 @@ export function createButton(app) {
   const keyupListener = (e) => {
     if (
       keys.pressed &&
-      (e.code === "Enter" || e.code === "NumpadEnter" || e.code === "Space")
+      (e.code === "Enter" || e.code === "NumpadEnter")
     ) {
       keys.pressed = false;
 

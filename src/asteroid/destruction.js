@@ -2,7 +2,7 @@ import { asteroids } from "./createAsteroid"; // Імпортуємо астер
 
 let destructions = 0;
 
-export function destruction(activeBullets) {
+export function destructionAsteroid(activeBullets) {
   for (let i = activeBullets.length - 1; i >= 0; i--) {
     const bullet = activeBullets[i];
 

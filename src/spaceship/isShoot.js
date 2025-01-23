@@ -1,8 +1,8 @@
-import { destruction } from "../asteroid/destruction";
+import { destructionAsteroid } from "../asteroid/destruction";
 import { refs } from "../common/data";
-import { showRemaindBullets } from "../helpers/setQuantityBullets";
 import { stopGame } from "../helpers/stopGame";
 import { createBullet } from "../bullet/createBullet";
+import { showRemaindBullets } from "../helpers/setQuantityBullets";
 
 export function isShoot(app, spaceship) {
   const keys = {};
@@ -11,25 +11,21 @@ export function isShoot(app, spaceship) {
   let quantityMissedShoots = 0;
 
   window.addEventListener("keydown", (e) => {
-    console.log(app.level2)
     if (app.level1 && !app.level2) {
       if (app.level1.asteroids !== app.level1.quantityDistractionAsteroid) {
-        keys[e.code] = true;
-        if (e.code === "Space" && !keys["SpaceFired"] && totalBullets) {
-          keys["SpaceFired"] = true;
-          const bullet = createBullet();
-          bullet.x = spaceship.x;
-          bullet.y = spaceship.y - refs.spaceshipHeight / 1.1;
-          app.stage.addChild(bullet);
-          activeBullets.push(bullet);
-          totalBullets -= 1;
-          showRemaindBullets(totalBullets);
-          app.level1.quantityUsedBullets = refs.totalBullets - totalBullets;
-        }
+          keys[e.code] = true;
+          if (e.code === "Space" && !keys["SpaceFired"] && totalBullets) {
+            keys["SpaceFired"] = true;
+            const bullet = createBullet();
+            bullet.x = spaceship.x;
+            bullet.y = spaceship.y - refs.spaceshipHeight / 1.1;
+            app.stage.addChild(bullet);
+            activeBullets.push(bullet);
+            totalBullets -= 1;
+            showRemaindBullets(totalBullets);
+            app.level1.quantityUsedBullets = refs.totalBullets - totalBullets;
+          }
       }
-    }
-    if (app.level2) {
-      console.log("is shooting");
     }
   });
 
@@ -44,7 +40,7 @@ export function isShoot(app, spaceship) {
     for (let i = activeBullets.length - 1; i >= 0; i -= 1) {
       const bullet = activeBullets[i];
       bullet.y -= refs.speedBullet; // Рух кулі вгору
-      const destructions = destruction(activeBullets);
+      const destructions = destructionAsteroid(activeBullets);
       app.level1.quantityDistractionAsteroid = destructions;
       // Видалення кулі, якщо вона виходить за межі екрану
       if (bullet.y < 0) {
