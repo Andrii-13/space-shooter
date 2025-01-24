@@ -18,6 +18,11 @@ export function stopGame(app) {
     }
   }
 
+  if (app.ticker) {
+    app.ticker.stop();  // Зупиняє оновлення кадрів
+    app.ticker.remove(); // Очищає всі функції, які були додані до ticker
+  }
+
   switch (app.level1.gamerStatus) {
     case "":
       finNotification(app);

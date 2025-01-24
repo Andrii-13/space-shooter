@@ -6,8 +6,11 @@ export function finNotification(app) {
 
   const winner = app.level1.gamerStatus;
 
-  const titleLevelStyle = new TextStyle({ ...titleStyle, _fontSize: 80})
-  const subTitle = new Text({ text: (winner ? "YOU WIN" : "YOU LOSE"), style: titleLevelStyle });
+  const titleLevelStyle = new TextStyle({ ...titleStyle, _fontSize: 80 });
+  const subTitle = new Text({
+    text: winner ? "YOU WIN" : "YOU LOSE",
+    style: titleLevelStyle,
+  });
 
   subTitle.x = app.screen.width / 2;
   subTitle.y = 300;

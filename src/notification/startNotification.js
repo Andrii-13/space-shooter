@@ -33,7 +33,7 @@ export function startNotification(app, level) {
     
     switch (gameLevel) {
       case "Level 1":
-        startGame(app);
+       startGame(app);
         break;
       case "Level 2":
         startGame2(app)
