@@ -2,6 +2,7 @@ import { Graphics } from "pixi.js";
 import { refs } from "../common/data";
 
 export function createBullet(x, y) {
+  console.log("створено кулю")
     const bullet = new Graphics();
     bullet.fill(refs.bulletColor); 
     bullet.circle(0, 0, refs.bulletDiametr); 

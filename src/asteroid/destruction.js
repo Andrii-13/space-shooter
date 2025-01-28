@@ -1,44 +1,50 @@
-import { asteroids } from "./createAsteroid"; // Імпортуємо астероїди
+import { refs } from "../common/data";
+import { checkCollision } from "../helpers/checkCollision";
+import { stopGame } from "../helpers/stopGame";
+import { asteroids } from "./createAsteroid";
 
 let destructions = 0;
 
-export function destructionAsteroid(activeBullets) {
-  for (let i = activeBullets.length - 1; i >= 0; i--) {
-    const bullet = activeBullets[i];
+export function destructionAsteroid(app, activeBullet, stopBullet, level) {
+  let quantityMissedShoots = 0;
+  for (let j = asteroids.length - 1; j >= 0; j--) {
+    const asteroid = asteroids[j];
+    if (checkCollision(activeBullet, asteroid)) {
+      asteroids.splice(j, 1); // Якщо сталося зіткнення:Видаляємо астероїд
 
-    for (let j = asteroids.length - 1; j >= 0; j--) {
-      const asteroid = asteroids[j];
-      if (checkCollision(bullet, asteroid)) {
-        // Якщо сталося зіткнення:
-        // Видаляємо кулю і астероїд
-        activeBullets.splice(i, 1);
-        asteroids.splice(j, 1);
+      app.stage.removeChild(activeBullet);
+      level.quantityDistractionAsteroid += 1;
+
+      if (asteroid.parent) {
         // Видаляємо спрайти з контейнерів, перевіряючи, чи існують вони
-        if (bullet.parent) {
-          bullet.parent.removeChild(bullet);
-        }
-
-        if (asteroid.parent) {
-          asteroid.parent.removeChild(asteroid);
-        }
-        destructions += 1;
-        break; // Виходимо з циклів, бо астероїд і куля вже видалені
+        asteroid.parent.removeChild(asteroid);
       }
+
+      stopBullet();
+      destructions += 1;
+
+      if (
+        quantityMissedShoots + destructions === refs.totalBullets &&
+        destructions !== app.level1.asteroids
+      ) {
+        app.level1.stopGame = true;
+        stopGame(app);
+      }
+
+      if (
+        app.level1.quantityDistractionAsteroid === app.level1.asteroids &&
+        app.level1.quantityUsedBullets >= 0 &&
+        app.level1.remainingTime >= 0 &&
+        !app.level1.stopGame
+      ) {
+        app.level1.gamerStatus = "win";
+        app.level1.stopGame = true;
+        stopGame(app);
+      }
+
+      break; // Виходимо з циклів, бо астероїд і куля вже видалені
     }
   }
-  //app.level1.quantityDistractionAsteroid = destructions;
-  return destructions;
-}
 
-// Функція перевірки зіткнення між кулею і астероїдом
-function checkCollision(bullet, asteroid) {
-  const bounds1 = bullet.getBounds(); // Отримуємо межі кулі
-  const bounds2 = asteroid.getBounds(); // Отримуємо межі астероїда
-  // Перевіряємо, чи перетинаються ці межі
-  return (
-    bounds1.x + bounds1.width > bounds2.x && // Лівий край кулі за правим краєм астероїда
-    bounds1.x < bounds2.x + bounds2.width && // Правий край кулі за лівим краєм астероїда
-    bounds1.y + bounds1.height > bounds2.y && // Верхній край кулі за нижнім краєм астероїда
-    bounds1.y < bounds2.y + bounds2.height // Нижній край кулі за верхнім краєм астероїда
-  );
+  return destructions;
 }

@@ -1,3 +1,4 @@
+import { checkCollision } from "../helpers/checkCollision";
 import { hitPoints } from "./hitPoints";
 
 export function moveBoss(app, boss) {
@@ -6,9 +7,8 @@ export function moveBoss(app, boss) {
   const max = app.screen.width - boss.width;
   setInterval(() => {
     const moovingX = Math.floor(Math.random() * (max - min + 1)) + min;
-    boss.x = moovingX
+    boss.x = moovingX;
 
-   hitPoints(app, boss.x)
-    //console.log(app.stage.children)
+    hitPoints(app, boss.x);
   }, 2000);
 }

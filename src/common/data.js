@@ -6,7 +6,7 @@ export const refs = {
   appWidth: 1280,
   appHeight: 720,
 
-  gameTime: 60,
+  gameTime: 10,
 
   spaceshipWidth: 120,
   spaceshipHeight: 120,
@@ -27,4 +27,5 @@ export const refs = {
   hitPointsHeight: 10,
   hitPointsWidth: 20,
   totalHitPoints: 4,
+
 };

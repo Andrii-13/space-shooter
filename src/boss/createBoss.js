@@ -3,6 +3,7 @@ import { moveBoss } from "./moveBoss";
 import { bossShoot } from "./bossShoot";
 import { refs } from "../common/data";
 import { hitPoints } from "./hitPoints";
+import { woundBoss } from "./woundBoss";
 
 export async function createBoss(app) {
   const bossContainer = new Container();
@@ -24,5 +25,7 @@ export async function createBoss(app) {
   moveBoss(app, boss);
   bossShoot(app, boss);
   hitPoints(app, boss.x);
+
   console.log(app);
+
 }

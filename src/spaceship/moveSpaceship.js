@@ -1,6 +1,7 @@
 import { refs } from "../common/data";
 
 export function moveSpaceship(app, spaceship) {
+  
   const keys = {};
 
   window.addEventListener("keydown", (e) => {
@@ -27,6 +28,4 @@ export function moveSpaceship(app, spaceship) {
     }
 
   });
-
-  return;
 }

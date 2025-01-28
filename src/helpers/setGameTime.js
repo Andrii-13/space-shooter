@@ -10,21 +10,31 @@ export function setGameTime(app) {
   timerWrap.insertAdjacentHTML("beforeend", timerHTML);
   const numericEl = document.querySelector(".numeric");
 
+  let level;
+
+  if (app.level1 && !app.level2) {
+    level = app.level1;
+
+    
+  }else if(app.level1 && app.level2){
+    level = app.level2;
+  }
+
   const timeInterval = setInterval(() => {
     startTime -= 1;
     numericEl.textContent = startTime;
-    app.level1.remainingTime = startTime;
+    level.remainingTime = startTime;
 
     let clearIntervalStatus = false;
 
-    if (startTime <= 0 && !app.level1.stopGame) {
+    if (startTime <= 0 && !level.stopGame) {
       clearInterval(timeInterval);
       stopGame(app);
-      app.level1.stopGame = true;
-      clearIntervalStatus = true
+      level.stopGame = true;
+      clearIntervalStatus = true;
     }
 
-    if (app.level1.stopGame && !clearIntervalStatus) {
+    if (level.stopGame && !clearIntervalStatus) {
       clearInterval(timeInterval);
     }
   }, 1000);
